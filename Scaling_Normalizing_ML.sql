@@ -1,17 +1,17 @@
-CREATE OR REPLACE VIEW `focal-eon-405500.top10_stocks.stock_normalized_scaled` AS
+CREATE OR REPLACE VIEW `project.dataset.stock_normalized_scaled` AS
 
 WITH stats AS (
     SELECT
         AVG(Open) AS mean_open,
         STDDEV(Open) AS std_open
-    FROM `focal-eon-405500.top10_stocks.top10stocks`
+    FROM `project.dataset.top10stocks`
 ),
  min_max AS (
     SELECT
         MIN(Open) AS min_open, MAX(Open) AS max_open,
         MIN(Close) AS min_close, MAX(Close) AS max_close,
         MIN(Volume) AS min_volume, MAX(Volume) AS max_volume
-    FROM `focal-eon-405500.top10_stocks.top10stocks`
+    FROM `project.dataset.top10stocks`
 )
 
 SELECT
@@ -36,6 +36,6 @@ SELECT
     CASE WHEN Symbol = 'TGT' THEN 1 ELSE 0 END AS is_TGT,
     CASE WHEN Symbol = 'KR' THEN 1 ELSE 0 END AS is_KR,
     CASE WHEN Symbol = 'MAR' THEN 1 ELSE 0 END AS is_MAR
-FROM `focal-eon-405500.top10_stocks.top10stocks`, stats, min_max;
+FROM `project.dataset.top10stocks`, stats, min_max;
 
 
