@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW `focal-eon-405500.top10_stocks.stock_aggregates` AS
+CREATE OR REPLACE VIEW `project.dataset.stock_aggregates` AS
  SELECT
     Symbol,
     -- Aggregated values for Open
@@ -42,5 +42,5 @@ CREATE OR REPLACE VIEW `focal-eon-405500.top10_stocks.stock_aggregates` AS
     MIN(Date) AS Start_Date,
     MAX(Date) AS End_Date
     
-  FROM `focal-eon-405500.top10_stocks.top10stocks`
+  FROM `project.dataset.top10stocks`
   GROUP BY Symbol
