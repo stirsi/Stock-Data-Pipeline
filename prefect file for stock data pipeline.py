@@ -152,10 +152,6 @@ def stock_data_flow():
         queries_folder=r'folder that holds the queries' 
     )
 
-# To run the flow
-#if __name__ == "__main__":
-#    stock_data_flow()
-
 if __name__ == "__main__":
     stock_data_flow.serve(name="daily_stock_data_update",
                     interval=86400)
