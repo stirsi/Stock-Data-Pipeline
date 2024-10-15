@@ -1,7 +1,7 @@
-MERGE `focal-eon-405500.top10_stocks.top10stocks` AS t
+MERGE `project.dataset.table` AS t
 USING (
   SELECT DISTINCT Date, Symbol, Open, High, Low, Close, Volume
-  FROM `focal-eon-405500.top10_stocks.top10stocks_daily`
+  FROM `project.dataset.temp_table`
 ) AS s
 ON t.Date = s.Date AND t.Symbol = s.Symbol
 WHEN MATCHED THEN
